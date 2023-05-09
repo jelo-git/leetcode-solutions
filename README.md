@@ -1,2 +1,2 @@
 # leetcode-solutions
-Those are mine solutions to problems found on [LeetCode](leetcode.com/)
+Those are mine solutions to problems found on [LeetCode](https://leetcode.com/)
