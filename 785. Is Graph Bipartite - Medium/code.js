@@ -18,5 +18,3 @@ var isBipartite = function (graph) {
             return false
     return true
 };
-let arr = [[1, 3], [0, 2], [1, 3], [0, 2]]
-console.log(isBipartite(arr))
