@@ -16,4 +16,3 @@ var isAnagram = function (s, t) {
             return false
     return true
 };
-console.log(isAnagram("cata", "rat"))
