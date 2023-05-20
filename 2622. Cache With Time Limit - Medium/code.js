@@ -1,5 +1,5 @@
 var TimeLimitedCache = function () {
-
+    this.storage = new Map()
 };
 
 /** 
@@ -9,7 +9,11 @@ var TimeLimitedCache = function () {
  * @return {boolean} if un-expired key already existed
  */
 TimeLimitedCache.prototype.set = function (key, value, duration) {
-
+    let before = this.storage.has(key)
+    if (before)
+        clearTimeout(this.storage.get(key)[1])
+    this.storage.set(key, [value, setTimeout(() => { this.storage.delete(key) }, duration)])
+    return before
 };
 
 /** 
@@ -17,14 +21,14 @@ TimeLimitedCache.prototype.set = function (key, value, duration) {
  * @return {number} value associated with key
  */
 TimeLimitedCache.prototype.get = function (key) {
-
+    return this.storage.has(key) ? this.storage.get(key)[0] : -1
 };
 
 /** 
  * @return {number} count of non-expired keys
  */
 TimeLimitedCache.prototype.count = function () {
-
+    return this.storage.size
 };
 
 /**
